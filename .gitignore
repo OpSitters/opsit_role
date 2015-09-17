@@ -1,9 +1,22 @@
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+pkg/
+
+# only the default recipe should be checked in
+-/recipes/*
+-!recipes/default.rb
+
+# Berkshelf
 .vagrant
 /cookbooks
-/recipes/*
-!recipes/default.rb
+Berksfile.lock
 
 # Bundler
+Gemfile.lock
 bin/*
 .bundle/*
 
