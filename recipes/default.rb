@@ -27,6 +27,14 @@ include_recipe "#{cookbook_name}::#{node.chef_environment}" do
   ignore_failure true
 end
 
+# If there was a wrapper cookbook that set node['opsit']['base']['cookbook']
+# also try to load an environment recipe from that wrapper
+if node['opsit']['base']['cookbook'] != cookbook_name
+  include_recipe "#{node['opsit']['base']['cookbook']}::#{node.chef_environment}" do
+    ignore_failure true
+  end
+end
+
 # This is needed for dev
 if Chef::Config[:solo]
   include_recipe "chef-solo-search"

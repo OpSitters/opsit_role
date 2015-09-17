@@ -76,7 +76,7 @@ default['opsit']['sshd']['port'] = "22"
 
 Usage
 =====
-include role_base in a node's run list, check the releases page for production ready versions.
+include opsit_role in a node's run list, check the releases page for production ready versions.
 
 
 Contributing
