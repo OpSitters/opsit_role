@@ -21,19 +21,27 @@
 include_recipe 'opsit_libs'
 include_recipe 'opsit_ops'
 
-# Load a recipe from this cookbook for the current environment, if it exists.
-# This lets us add environment based settings. These recipes are gitignored.
-include_recipe "#{cookbook_name}::#{node.chef_environment}" do
-  ignore_failure true
-end
-
 # If there was a wrapper cookbook that set node['opsit']['base']['cookbook']
-# also try to load an environment recipe from that wrapper
+# try to load an environment recipe from that wrapper
 if node['opsit']['base']['cookbook'] != cookbook_name
-  include_recipe "#{node['opsit']['base']['cookbook']}::#{node.chef_environment}" do
-    ignore_failure true
+  begin
+    include_recipe "#{node['opsit']['base']['cookbook']}::#{node.chef_environment}" do
+      ignore_failure true
+    end
+  rescue
+    opsit_warn("No Environment Settings loaded from #{node['opsit']['base']['cookbook']} for #{node.chef_environment}")
+  end
+else
+  # Load a recipe from this cookbook for the current environment, if it exists.
+  begin
+    include_recipe "#{cookbook_name}::#{node.chef_environment}" do
+      ignore_failure true
+    end
+  rescue
+    opsit_debug("No Environment Settings loaded from #{cookbook_name} for #{node.chef_environment}")
   end
 end
+
 
 # This is needed for dev
 if Chef::Config[:solo]
