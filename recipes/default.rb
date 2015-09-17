@@ -54,7 +54,7 @@ critical_recipes = [
   'sudo'
 ]
 
-if node['opsit']['chef']['delete_validation']['enabled'] == true
+if node['opsit']['chef']['delete_validation'] == true
   critical_recipes << 'opsit_ops::delete_validation'
 end
 
