@@ -6,6 +6,8 @@ Base Server role, will include the environment of the server as part of the base
 
 Requirements
 ============
+- opsit_ops cookbook
+- opsit_libs cookbook
 - chef-solo-search cookbook
 - ntp cookbook
 - ohai cookbook
