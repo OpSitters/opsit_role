@@ -1,5 +1,7 @@
 .vagrant
 /cookbooks
+/recipes/*
+!recipes/default.rb
 
 # Bundler
 bin/*
