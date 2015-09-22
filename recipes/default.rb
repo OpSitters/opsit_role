@@ -83,7 +83,7 @@ if node['opsit']['services']['nagios']['enabled'] == true
   node.set['nagios']['host_attribute'] = node['opsit']['services']['nagios']['host_attribute']
   node.set['nagios']['host_environment'] = node['opsit']['services']['nagios']['host_environment']
   node.set['nagios']['server_role'] = node['opsit']['services']['nagios']['role']
-  if ! node.role?(node['opsit']['services']['nrpe']['role'])
+  if ! node.role?(node['opsit']['services']['nagios']['role'])
     critical_recipes << 'opsit_ops::nrpe'
   end
 end
