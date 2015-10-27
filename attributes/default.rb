@@ -45,5 +45,5 @@ default['opsit']['packages']['tools'] = true
 
 # Configure SSHD for two factor auth if available?
 default['opsit']['sshd']['configure'] = true
-default['opsit']['sshd']['port'] = "22"
-
+default['opsit']['sshd']['port'] = 22
+default['opsit']['sshd']['password_auth'] = 'yes'
