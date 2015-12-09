@@ -47,3 +47,4 @@ default['opsit']['packages']['tools'] = true
 default['opsit']['sshd']['configure'] = true
 default['opsit']['sshd']['port'] = 22
 default['opsit']['sshd']['password_auth'] = 'yes'
+default['opsit']['sshd']['permit_root_login'] = 'no'
